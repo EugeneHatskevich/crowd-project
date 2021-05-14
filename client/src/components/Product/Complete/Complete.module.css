@@ -1,0 +1,9 @@
+.progress {
+    height: 30px;
+    border-radius: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.rowProgress {
+    margin: 10px 10px 10px 10px;
+}
