@@ -8,7 +8,6 @@ export const Bonuses = (props) => {
     let [bonuses, setBonuses] = useState([])
 
     useEffect(() => {
-
         projectAPI.getProjectCommentsOrBonuses(props.projectId, 'bonuses').then(response => {
             setBonuses(response.results)
         })
@@ -16,7 +15,7 @@ export const Bonuses = (props) => {
 
     const bonusList = bonuses.map(bonus => {
         return (
-            <Bonus key={bonus.id} {...bonus}/>
+            <Bonus key={bonus.id} {...bonus} projectId={props.projectId} choiceBonus={props.choiceBonus}/>
         )
     })
 

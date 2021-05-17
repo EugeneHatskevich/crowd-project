@@ -40,8 +40,7 @@ router.get('/:projectId/data', async (req, res) => {
         if (req.query.options === 'bonuses') {
             const results = await Bonus.findAll({where: {projectId: req.params.projectId}})
             res.status(200).json({results})
-        }
-        else if (req.query.options === 'news') {
+        } else if (req.query.options === 'news') {
             const results = await News.findAll({where: {projectId: req.params.projectId}})
             res.status(200).json({results})
         } else if (req.query.options === 'comments') {
@@ -108,12 +107,12 @@ router.post('/create', async (req, res) => {
         }
     }
 
-    if(req.body.tags) {
+    if (req.body.tags) {
         const tags = req.body.tags.split('#').slice(1)
 
-        for (tag of tags){
+        for (tag of tags) {
             Tags.create({name: tag}).then(results => {
-                Tags.findOne({where:{name: tag}}).then(newTag => {
+                Tags.findOne({where: {name: tag}}).then(newTag => {
                     project.addTags(newTag).then(results => {
                         console.log(results)
                     })
@@ -135,6 +134,23 @@ router.post('/addComment', async (req, res) => {
     })
 
     res.status(201).json({message: 'Комментарий создан'})
+})
+
+router.post('/addBonusForProfile', async (req, res) => {
+
+    const profile = await Profile.findOne({where: {id: req.body.profileId}})
+
+    Bonus.findOne({where: {id: req.body.bonusId}}).then(bonus => {
+        bonus.addProfile(profile).then(response => {
+            Project.findOne({where: {id: req.body.projectId}}).then(project => {
+                project.increment({'current_cash': req.body.value}).then(response => {
+                    Project.findOne({where: {id: req.body.projectId}}).then(results => {
+                        res.status(201).json({results})
+                    })
+                })
+            })
+        })
+    })
 })
 
 module.exports = router

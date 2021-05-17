@@ -1,7 +1,20 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {NavLink} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
+import {profileAPI} from "../../api/profile.api";
 
-export const ProfileListProject = (props) => {
+export const SeeAllProject = (props) => {
+
+    const profileId = useContext(AuthContext).profileId
+    const [profileProject, setProfileProject] = useState([])
+
+    useEffect(() => {
+        profileAPI.getProfileData(profileId).then(response => {
+            setProfileProject(response.projects)
+            setProfileBonus(response.bonuses)
+        })
+    }, [profileId])
+
     return (
         <table className="table table-bordered">
             <thead>

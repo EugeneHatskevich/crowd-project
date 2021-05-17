@@ -4,15 +4,17 @@ import {Field} from "redux-form";
 export const BonusProductCreateForm = (props) => {
     return (
         <div>
-            <button type="button" onClick={() => props.fields.push({})}>Add Bonus</button>
             {props.fields.map((bonus, index) => {
                     return (
-                        <div key={index}>
-                            <button
-                                type="button"
-                                title="Remove Bonus"
-                                onClick={() => props.fields.remove(index)}/>
-                            <h6>Bonus #{index + 1}</h6>
+                        <div key={index} className="border-dark border">
+                            <div className='row'>
+                                <div className="col-11">Бонус #{index + 1}</div>
+                                <div className="col-1"><button
+                                    type="button"
+                                    title="Remove Bonus"
+                                    onClick={() => props.fields.remove(index)}
+                                    className="btn btn-danger">X</button></div>
+                                </div>
                             <div className="row mb-3">
                                 <label className="col-sm-2 col-form-label">Название бонуса</label>
                                 <div className="col-sm-6">
@@ -36,6 +38,7 @@ export const BonusProductCreateForm = (props) => {
                     )
                 }
             )}
+            <button type="button" onClick={() => props.fields.push({})}>Add Bonus</button>
         </div>
     )
 }

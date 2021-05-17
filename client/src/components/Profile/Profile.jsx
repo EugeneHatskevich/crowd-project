@@ -15,7 +15,7 @@ export const Profile = (props) => {
                 <div className='col-3'/>
                 <div className='col-6'>
                     <div>
-                        <img class="img-fluid w-50" src={avatar} alt='No avatar'/>
+                        <img className="img-fluid w-50" src={avatar} alt='No avatar'/>
                     </div>
                     <div>
                         {auth.userName}
@@ -31,7 +31,11 @@ export const Profile = (props) => {
             <div className='row'>
                 <div className='col-1'/>
                 <div className='col-10'>
-                    <h3>Project list</h3>
+                    <div className="row">
+                        <div className="col-2"></div>
+                        <div className="col"><h3>Project list</h3></div>
+                        <div className="col-2 align-self-center"><NavLink to="./all_profile_project">Показать все</NavLink></div>
+                    </div>
                     <ProfileListProject projects={props.projects} />
                 </div>
                 <div className='col-1'/>

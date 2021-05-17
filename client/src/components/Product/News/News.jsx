@@ -8,7 +8,6 @@ export const News = (props) => {
     let [news, setNews] = useState([])
 
     useEffect(() => {
-
         projectAPI.getProjectCommentsOrBonuses(props.projectId, 'news').then(response => {
             setNews(response.results)
         })

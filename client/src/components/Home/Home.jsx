@@ -26,7 +26,7 @@ export const Home = (props) => {
                         </thead>
                         <tbody>
                         {props.topProjects.map((project, index) => {
-                            return <tr>
+                            return <tr key={project.id}>
                                 <th scope="row">{index + 1}</th>
                                 <td><NavLink to={'product/view/' + project.id}>{project.name}</NavLink></td>
                                 <td>{project.description}</td>
@@ -55,7 +55,7 @@ export const Home = (props) => {
                         </thead>
                         <tbody>
                         {props.updateProjects.map((project, index) => {
-                            return <tr>
+                            return <tr key={project.id}>
                                 <th scope="row">{index + 1}</th>
                                 <td><NavLink to={'product/view/' + project.id}>{project.name}</NavLink></td>
                                 <td>{project.description}</td>

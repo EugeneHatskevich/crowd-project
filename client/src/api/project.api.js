@@ -1,13 +1,5 @@
 import axios from "axios";
 
-// const instance = axios.create({
-//     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-//     withCredentials: true,
-//     headers: {
-//         'API-KEY': 'd0006109-22bf-4a2b-a12a-1c786f43ea4f'
-//     }
-// })
-
 export const projectAPI = {
     getUsers(limit, order) {
         return axios.get(`/api/project/sort?limit=${limit}&order_by=${order}`
@@ -29,5 +21,8 @@ export const projectAPI = {
     },
     addNewComment(comment){
         return axios.post('../../api/project/addComment', comment)
+    },
+    setBonusForProfile(bonusIdAndProfileId) {
+        return axios.post('../../api/project/addBonusForProfile', bonusIdAndProfileId)
     }
 }

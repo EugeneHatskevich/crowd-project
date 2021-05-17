@@ -11,7 +11,7 @@ const Projects = models.project
 
 router.get('/view/:profileId', async (req, res) => {
 
-        Projects.findAll({where: {profileId: req.params.profileId}}).then(projects => {
+        Projects.findAll({where: {profileId: req.params.profileId}, limit: 1}).then(projects => {
             Profile.findOne({where: {id: req.params.profileId}}).then(profile => {
                 profile.getBonuses().then(bonuses => {
                     res.status(200).json({projects, bonuses})

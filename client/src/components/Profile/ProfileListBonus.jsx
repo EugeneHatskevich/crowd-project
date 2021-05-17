@@ -15,7 +15,7 @@ export const ProfileListBonus = (props) => {
             </thead>
             <tbody>
             {props.bonuses.map((bonus, index) => {
-                return <tr>
+                return <tr key={bonus.id}>
                     <th scope="row">{index + 1}</th>
                     <td>{bonus.name}</td>
                     <td>{bonus.value}</td>

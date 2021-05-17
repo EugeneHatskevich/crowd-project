@@ -2,8 +2,6 @@ import React, {useContext} from 'react'
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import exitIcons from '../../assets/icons/exit.svg'
-import {NavbarLogin} from "./NavbarLogin";
-import {NavbarRegister} from "./NavbarRegister";
 
 export const Navbar = (props) => {
 
@@ -32,8 +30,7 @@ export const Navbar = (props) => {
                                 <li className="nav-item">
                                     {!auth.isAuthenticated &&
                                     <div className="row">
-                                        <div className="col-6 pr-0"><NavbarLogin /></div>
-                                        <div className="col-6 pl-0"><NavbarRegister/></div>
+                                        <div className="col-6 pr-0"><NavLink to='/login'>Войти/Регистрация</NavLink></div>
                                     </div>}
                                     {auth.isAuthenticated &&
                                     <div>
