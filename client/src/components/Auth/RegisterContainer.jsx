@@ -3,7 +3,6 @@ import {authAPI} from "../../api/auth.api";
 import {Field, reduxForm} from "redux-form";
 import {Preloader} from "../Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {required} from "../Form-control/validateFunction";
 
 
 export const RegisterContainer = () => {
@@ -39,7 +38,7 @@ const RegisterForm = (props) => {
                 <label htmlFor="exampleInputEmail1" className="form-label">Введите email</label>
                 <Field type="email" className="form-control" component='input'
                        name='email'
-                       placeholder='Input your email' validate={[required]}/>
+                       placeholder='Input your email' required/>
             </div>
             <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Введите пароль</label>
